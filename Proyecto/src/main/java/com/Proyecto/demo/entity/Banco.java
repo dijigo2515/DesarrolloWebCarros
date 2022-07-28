@@ -22,7 +22,7 @@ public class Banco implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private long id; 
-   private String local;
+   private String banco;
 
     public long getId() {
         return id;
@@ -32,15 +32,11 @@ public class Banco implements Serializable {
         this.id = id;
     }
 
-    public String getLocal() {
-        return local;
+    public String getBanco() {
+        return banco;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public void setBanco(String banco) {
+        this.banco = banco;
     }
-
-    
-   
-   
 }
