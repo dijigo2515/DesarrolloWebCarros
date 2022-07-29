@@ -48,7 +48,7 @@ public class CarroController {
         List<Lugar> listaLugares = lugarService.listSucursal();
         model.addAttribute("carro", new Carro());
         model.addAttribute("lugares", listaLugares);
-        return "crear";
+        return "crearcarro";
     }
 
     @PostMapping("/save")
@@ -63,7 +63,7 @@ public class CarroController {
         List<Lugar> listaLugares = lugarService.listSucursal();
         model.addAttribute("carro", carro);
         model.addAttribute("lugares", listaLugares);
-        return "crear";
+        return "crearcarro";
     }
     @GetMapping("/delete/{id}")
     public String eliminarCarro(@PathVariable("id") Long idCarro) {
