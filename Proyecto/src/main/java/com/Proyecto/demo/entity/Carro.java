@@ -32,8 +32,8 @@ public class Carro implements Serializable {
     private String precio;
     
     @ManyToOne 
-    @JoinColumn(name="lugares_id")
-    private Lugar lugar;   
+    @JoinColumn(name="marcas_id")
+    private Marca marca;   
 
     public long getId() {
         return id;
@@ -91,11 +91,11 @@ public class Carro implements Serializable {
         this.precio = precio;
     }
 
-    public Lugar getLugar() {
-        return lugar;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setLugar(Lugar lugar) {
-        this.lugar = lugar;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 }

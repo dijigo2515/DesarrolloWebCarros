@@ -15,7 +15,6 @@
                     <th scope="col">Color </th>
                     <th scope="col">Motor </th>
                     <th scope="col">Precio </th>
-                    <th scope="col">Lugar </th>
                     <th scope="col">Marca </th>
                     <th scope="col">Editar </th>
                     <th scope="col">Eliminar</th>
@@ -30,7 +29,6 @@
                     <td th:text="${user.getColor}"></td> 
                     <td th:text="${user.getMotor}"></td> 
                     <td th:text="${user.getPrecio}"></td> 
-                    <td th:text="${user.getLugar.getLugar}"></td>
                     <td th:text="${user.getMarca.getMarca}"></td>
                     <td>
                         <a th:href="@{/editCarro/{id}(id=${user.getId})}">Editar</a>

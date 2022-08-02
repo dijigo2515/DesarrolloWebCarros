@@ -28,7 +28,6 @@ public class Venta implements Serializable {
     private int telefono;
     private String marca;
     private String modelo; 
-    private int año;
     private String transmision;
     private String tipo;
     private String color;
@@ -77,14 +76,6 @@ public class Venta implements Serializable {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public int getAño() {
-        return año;
-    }
-
-    public void setAño(int año) {
-        this.año = año;
     }
 
     public String getTransmision() {
