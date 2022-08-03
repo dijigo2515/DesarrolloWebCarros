@@ -16,12 +16,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   
 }
 body{
-    background: linear-gradient(#0C1440,#18298C,#B0C6D9);
+    background: white;
     overflow: hidden;
     height: 100vh;
 }
 .form-Registro {
- width: 400px;
+ width: 600px;
  background: #0C1440;
  padding: 30px;
  margin: auto;
@@ -82,4 +82,54 @@ body{
     border-radius: 10px;
 }
 
+.navbar1{
+    position:static;
+    padding-left: 10%;
+    padding-right: -40%;
+    background-color: #0F1A59;
+    position: relative;
+    top:-1%;
+    height:6.5vh;
+    width:148.11%;
+    left: -309px;
+    display:flex;
+    margin:auto;
+    align-items: center; 
+}
+
+.nav{
+    /*El flex que tanto va crecer como de uno a uno*/
+  flex:1;
+  padding-left: 70px;
+
+}
+
+.nav ul li{
+    position:relative;
+    display:inline-block;
+    list-style: none;
+    margin:0px 11px;
+    top:10px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Monda', sans-serif;
+    left:600px;
+}
+
+
+.nav ul li img{
+   position:relative;
+   display:inline-block;
+   margin:0px 5px;
+   top:0px;
+}
+
+.nav-item{
+    position: relative;
+    display:inline-block;
+    margin:0px 30px;
+    font-size: 25px;
+    left: 200px;
+    font-family: 'Monda', sans-serif;
+}
 
