@@ -54,12 +54,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         </div>
                                        
                         <div class="form-group mb-3 row">
-                            <label class="form-control-sm col-form-label col-md-2" for="lugares">Lugar o sucursal</label>
+                            <label class="form-control-sm col-form-label col-md-2" for="marcas">Marca</label>
                             <div class="col-sm-10">
-                                <select th:field="*{lugar}" class="form-control form-control-sm col-md-6" id="lugar" aria-describedby="lugarHelp">
-                                   <option th:each= "x:${lugares}"
+                                <select th:field="*{marca}" class="form-control form-control-sm col-md-6" id="marca" aria-describedby="marcaHelp">
+                                   <option th:each= "x:${marcas}"
                                            th:value= "${x.id}"
-                                           th:text= "${x.lugar}"/> 
+                                           th:text= "${x.marca}"/> 
                                 </select>  
                             </div>
                          </div>
