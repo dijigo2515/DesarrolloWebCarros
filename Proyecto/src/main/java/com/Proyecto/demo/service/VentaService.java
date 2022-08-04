@@ -23,7 +23,7 @@ public class VentaService implements IVentaService{
 
     @Override
     public List<Venta> getAllVenta() {
-      return (List<Venta>)ventaRepository.findAll();  //Devuelve toda la lista de verduras
+      return (List<Venta>)ventaRepository.findAll(); 
     }
 
     @Override
