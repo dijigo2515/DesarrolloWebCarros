@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   
+    <head th:replace="plantilla/template::head"></head>
+    <body>
+        <header th:replace="plantilla/template::header"></header>
+        <h1 th:text="${titulo}"></h1>   
+
+        <table class="table table-success table-striped-columns">
+            <thead class="thead-green">
+                <tr>   
+                    <th scope="col">Modelo </th>
+                    <th scope="col">Transmision </th>
+                    <th scope="col">Tipo </th>
+                    <th scope="col">Color </th>
+                    <th scope="col">Motor </th>
+                    <th scope="col">Precio </th>
+                    <th scope="col">Marca </th>
+                    <th scope="col">Editar </th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user:${carros}">  
+                <tr>
+                    <td th:text="${user.getModelo}"></td>  
+                    <td th:text="${user.getTransmision}"></td> 
+                    <td th:text="${user.getTipo}"></td> 
+                    <td th:text="${user.getColor}"></td> 
+                    <td th:text="${user.getMotor}"></td> 
+                    <td th:text="${user.getPrecio}"></td> 
+                    <td th:text="${user.getMarca.getMarca}"></td>
+                    <td>
+                        <a th:href="@{/editCarro/{id}(id=${user.getId})}">Editar</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/delete/{id}(id=${user.getId})}">Eliminar</a>
+                    </td>  
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+    <a th:href="@{/carroN}">Agregar carro nuevo</a>
+</body>
+<footer th:replace="plantilla/template::footer"></footer>
+</html>
