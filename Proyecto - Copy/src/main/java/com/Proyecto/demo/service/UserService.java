@@ -14,18 +14,18 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author maryg
+ * @author Diana Jiménez
  */
 @Service
-public class UserService implements UserDetailsService{
-    
+public class UserService implements UserDetailsService {           //userservice: se guarda la info para despues ser utilizada
+                                                                   //Interactua con spring security 
     @Autowired
-    public IPersonaService personaService;
+    public IPersonaService personaService; 
     
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-    Persona persona = this.personaService.findByNombre(username);
-    Userprincipal userPrincipal = new Userprincipal (persona);
-    return userPrincipal;
+    public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException{  //Cargando la info del username
+        Persona persona = this.personaService.findByNombre(username);    
+        Userprincipal userPrincipal = new Userprincipal(persona);   //Toda la informacion de la persona
+        return userPrincipal;
     }
 }

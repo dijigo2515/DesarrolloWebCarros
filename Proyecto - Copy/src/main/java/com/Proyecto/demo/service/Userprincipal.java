@@ -12,68 +12,62 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 /**
  *
- * @author maryg
+ * @author Diana Jiménez
  */
-
 public class Userprincipal implements UserDetails {
-    
-    private Persona persona;
+    private Persona persona; 
     
     public Userprincipal (Persona persona){
-    this.persona = persona;
-  
+        this.persona = persona;
     }
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-    List<GrantedAuthority> authorities = new ArrayList<>();
+        List<GrantedAuthority> authorities = new ArrayList<>();      //Guarda objetos de tipo granted authority: cuales son los roles o permisos que tiene un usuario
+        
+        //Extract list of permissions (name)
+        this.persona.getPermissionList().forEach (p -> {                         //p es cada elemento
+        GrantedAuthority authority = new SimpleGrantedAuthority(p);             //Le pasamos "p" que es el permiso
+        authorities.add(authority);
+        });
     
-    this.persona.getPermissionList().forEach(p ->{
-    GrantedAuthority authority = new SimpleGrantedAuthority(p);
-    authorities.add(authority);
-    });
-    this.persona.getRoleList().forEach(r ->{
-    GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+r);
-    authorities.add(authority); 
-    });
-    return authorities;
-}
-    
-    @Override
-    public String getPassword(){
-    return this.persona.getPassword();
+        //Extract list of roles (ROLE name)
+        this.persona.getRoleList().forEach(r -> {
+           GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);   //Spring security
+           authorities.add(authority);
+        });
+        return authorities;            //Devuelve lista de todos los permisos
     }
-    
+
     @Override
-    public String getUsername(){
-    return this.persona.getNombre();
+    public String getPassword() {
+        return this.persona.getPassword();
     }
-    
+
     @Override
-    public boolean isAccountNonExpired(){
-    return true;
+    public String getUsername() {
+        return this.persona.getNombre();
     }
-    
+
     @Override
-    public boolean isAccountNonLocked(){
-    return true;
+    public boolean isAccountNonExpired() {
+        return true;
     }
-    
+
     @Override
-    public boolean isEnabled(){
-    return this.persona.getActive() == 1;
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-       return true;
+        return true;
     }
 
-    
-    
-    
-    
+    @Override
+    public boolean isEnabled() {
+        return this.persona.getActive() == 1;
+    }
 }
