@@ -70,6 +70,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll().defaultSuccessUrl("/carro",true);
+                .loginPage("/login").permitAll().defaultSuccessUrl("/Home.html",true);
     }
 }
