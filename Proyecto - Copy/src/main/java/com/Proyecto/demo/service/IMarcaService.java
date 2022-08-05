@@ -12,5 +12,5 @@ import java.util.List;
  * @author Diana Jiménez
  */
 public interface IMarcaService {
-    public List<Marca> listSucursal();
+    public List<Marca> listMarcs();
 }

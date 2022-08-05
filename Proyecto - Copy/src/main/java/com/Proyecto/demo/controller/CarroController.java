@@ -6,6 +6,7 @@ package com.Proyecto.demo.controller;
 
 import com.Proyecto.demo.entity.Carro;
 import com.Proyecto.demo.entity.Lugar;
+import com.Proyecto.demo.entity.Marca;
 import com.Proyecto.demo.service.ICarroService;
 import com.Proyecto.demo.service.ILugarService;
 import com.Proyecto.demo.service.IMarcaService;
@@ -45,8 +46,10 @@ public class CarroController {
 
     @GetMapping("/carroN")
     public String crearCarro(Model model) {
+        List<Marca> listaMarcas = marcaService.listMarcs();
         List<Lugar> listaLugares = lugarService.listSucursal();
         model.addAttribute("carro", new Carro());
+        model.addAttribute("marcas", listaMarcas);
         model.addAttribute("lugares", listaLugares);
         return "crearcarro";
     }
@@ -60,8 +63,10 @@ public class CarroController {
     @GetMapping("/editCarro/{id}")
     public String editarCarro(@PathVariable("id") Long idCarro, Model model) {
         Carro carro = carroService.getCarroById(idCarro);
+        List<Marca> listaMarcas = marcaService.listMarcs();
         List<Lugar> listaLugares = lugarService.listSucursal();
         model.addAttribute("carro", carro);
+        model.addAttribute("marcas", listaMarcas);
         model.addAttribute("lugares", listaLugares);
         return "crearcarro";
     }
