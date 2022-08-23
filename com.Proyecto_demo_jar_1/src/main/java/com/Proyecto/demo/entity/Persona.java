@@ -34,7 +34,10 @@ public class Persona implements Serializable{
     private String permissions = "";
     private String roles = "";
     
-   
+    @ManyToOne
+    @JoinColumn(name="lugares_id")
+    private Lugar lugar;
+
     public long getId() {
         return id;
     }
@@ -81,6 +84,14 @@ public class Persona implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Lugar getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Lugar lugar) {
+        this.lugar = lugar;
     }
     
     public String getPassword() {

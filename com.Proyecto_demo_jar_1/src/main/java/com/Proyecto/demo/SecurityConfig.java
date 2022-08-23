@@ -63,13 +63,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
     
         http.authorizeRequests()
-                .antMatchers("/carro","/login","/carroN")
+                .antMatchers("/persona","/login","/personasN")
                 .hasRole("ADMIN")
-                .antMatchers("/carro","/","/login")
+                .antMatchers("/persona","/","/login")
                 .hasAnyRole("USER","VENDEDOR","ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll().defaultSuccessUrl("/carro",true);
+                .loginPage("/login").permitAll().defaultSuccessUrl("/persona",true);
     }
 }
