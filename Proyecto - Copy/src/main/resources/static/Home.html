@@ -5,7 +5,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Todo Autos</title>
         <link rel="stylesheet" href="css/home.css"/>
@@ -16,7 +17,7 @@ and open the template in the editor.
 
     <body>
         
-        <!-- NAV BAR-->
+        <h1>Hola</h1>
 
         <div class = 'container'>
             
@@ -48,8 +49,11 @@ and open the template in the editor.
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Vender mi vehiculo</a>
                             </li>
+                            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                                <a class="nav-link" href="login.html">Admin</a>
+                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.html">Iniciar sesi&Oacute;n</a>
+                                <a class="nav-link" href="login.html">User</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

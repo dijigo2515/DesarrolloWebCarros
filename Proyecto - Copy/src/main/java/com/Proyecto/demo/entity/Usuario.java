@@ -18,16 +18,16 @@ import javax.persistence.Table;
  * @author maryg
  */
 @Entity
-@Table(name="personas")
-public class Persona implements Serializable{
+@Table(name="usuario")
+public class Usuario implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private String telefono;
     private String email;
+    private String telefono;    
     
     private String password;
     private int active;
@@ -131,6 +131,13 @@ public class Persona implements Serializable{
     
     }
     return new ArrayList<>();
+    }
+    
+    public boolean hasRole(String rol){
+        if(roles.equals(rol)){
+            return true;
+        }
+        return false;
     }
     
 }

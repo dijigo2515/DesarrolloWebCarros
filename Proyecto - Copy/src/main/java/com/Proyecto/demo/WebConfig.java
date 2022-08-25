@@ -6,7 +6,6 @@
 package com.Proyecto.demo;
 
 import java.util.Locale;
-import lombok.experimental.var;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -32,6 +31,7 @@ public class WebConfig implements WebMvcConfigurer {
         slr.setDefaultLocale(new Locale("en"));
         return slr;
     }
+    
     
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor(){

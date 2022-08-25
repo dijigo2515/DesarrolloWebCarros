@@ -18,23 +18,34 @@ import javax.persistence.Table;
  * @author Diana Jiménez
  */
 @Entity
-@Table(name="carros")
+@Table(name="carro")
 public class Carro implements Serializable {
    
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id; 
+    private long id;         
     private String modelo; 
     private String transmision;
     private String tipo;
     private String color;
     private String motor;
-    private String precio;
+    private String precio;    
+    private String direccion;
+    private long idUsuario;
+    private String ruta_Imagen;
     
     @ManyToOne 
-    @JoinColumn(name="marcas_id")
-    private Marca marca;   
+    @JoinColumn(name="id_marca")
+    private Marca marca;      
 
+    @ManyToOne 
+    @JoinColumn(name="id_estado")
+    private EstadoVehiculo estadoVehiculo;  
+    
+    @ManyToOne 
+    @JoinColumn(name="id_provincia")
+    private Provincia provincia;  
+    
     public long getId() {
         return id;
     }
@@ -90,6 +101,22 @@ public class Carro implements Serializable {
     public void setPrecio(String precio) {
         this.precio = precio;
     }
+    
+    public String getRuta_Imagen() {
+        return ruta_Imagen;
+    }
+
+    public void setRuta_Imagen(String ruta_Imagen) {
+        this.ruta_Imagen = ruta_Imagen;
+    }
+    
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public Marca getMarca() {
         return marca;
@@ -98,4 +125,29 @@ public class Carro implements Serializable {
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
+    
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
+    public EstadoVehiculo getEstadoVehiculo() {
+        return estadoVehiculo;
+    }
+
+    public void setEstadoVehiculo(EstadoVehiculo estadoVehiculo) {
+        this.estadoVehiculo = estadoVehiculo;
+    }
+    
+    public Provincia getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+    
 }

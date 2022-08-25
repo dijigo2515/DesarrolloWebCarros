@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
  */
 public class AppAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     protected void handle (HttpServletRequest request, HttpServletResponse response, 
-            Authentication authentication) throws IOException, ServletException{
-    
+            Authentication authentication) throws IOException, ServletException{        
     }
 }

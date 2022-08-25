@@ -5,7 +5,7 @@
 package com.Proyecto.demo.service;
 
 
-import com.Proyecto.demo.entity.Persona;
+import com.Proyecto.demo.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,12 +20,12 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {           //userservice: se guarda la info para despues ser utilizada
                                                                    //Interactua con spring security 
     @Autowired
-    public IPersonaService personaService; 
+    public IUsuarioService usuarioService; 
     
     @Override
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException{  //Cargando la info del username
-        Persona persona = this.personaService.findByNombre(username);    
-        Userprincipal userPrincipal = new Userprincipal(persona);   //Toda la informacion de la persona
+        Usuario usuario = this.usuarioService.findByNombre(username);            
+        Userprincipal userPrincipal = new Userprincipal(usuario);   //Toda la informacion de la persona
         return userPrincipal;
     }
 }

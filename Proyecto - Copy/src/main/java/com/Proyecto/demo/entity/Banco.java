@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * @author Daniel Felipe
  */
 @Entity
-   @Table(name ="bancos")
+   @Table(name ="banco")
 public class Banco implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)

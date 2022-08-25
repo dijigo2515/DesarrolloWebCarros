@@ -14,22 +14,10 @@ and open the template in the editor.
 
 
 *{
-    margin:0;
-    padding:0;
     font-family:'Bebas Neue', cursive;
 }
 
-.container{
-    height:100vh;
-    width:100%;
-    background-position:center;
-    background-size: cover;
-    padding-left: 10%;
-    padding-right: 35%;
-    box-sizing: border-box;
-    position:relative;
-    
-}
+
 /*Lo que hace el display el comportamiento de nuestros elementos en la cajita el flex hace que se acomoden en un nivel de bloque , align es que los queremos centrados
 */
 .navbar1{
@@ -40,7 +28,7 @@ and open the template in the editor.
     position: relative;
     top:-1%;
     height:6.5vh;
-    width:148.11%;
+    width:116%;
     left: -309px;
     display:flex;
     margin:auto;
@@ -199,17 +187,30 @@ and open the template in the editor.
     
 }
 
-.container2{
-    position: relative;
-    top:550px;
-    background-color:#0F1A59;
-    font-family: 'Monda', sans-serif;
-    
+footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:85px;   /* Height of the footer */
+   background:#0F1A59;
 }
 
 
+body{ height:100vh; margin:0; }
 
 
 
+header{ min-height:50px; background:lightcyan; }
+footer{ min-height:50px; background:PapayaWhip; }
+
+/* Trick */
+body{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+footer{
+  margin-top:auto; 
+}
 
 
