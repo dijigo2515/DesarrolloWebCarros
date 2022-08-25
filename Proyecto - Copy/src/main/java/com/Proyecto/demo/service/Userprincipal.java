@@ -12,10 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-/**
- *
- * @author Diana Jiménez
- */
+
 public class Userprincipal implements UserDetails {
     private Persona persona; 
     
@@ -25,20 +22,19 @@ public class Userprincipal implements UserDetails {
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-        List<GrantedAuthority> authorities = new ArrayList<>();      //Guarda objetos de tipo granted authority: cuales son los roles o permisos que tiene un usuario
+        List<GrantedAuthority> authorities = new ArrayList<>();    
         
-        //Extract list of permissions (name)
-        this.persona.getPermissionList().forEach (p -> {                         //p es cada elemento
-        GrantedAuthority authority = new SimpleGrantedAuthority(p);             //Le pasamos "p" que es el permiso
+        this.persona.getPermissionList().forEach (p -> {                         
+        GrantedAuthority authority = new SimpleGrantedAuthority(p);           
         authorities.add(authority);
         });
     
-        //Extract list of roles (ROLE name)
+        
         this.persona.getRoleList().forEach(r -> {
-           GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);   //Spring security
+           GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);   
            authorities.add(authority);
         });
-        return authorities;            //Devuelve lista de todos los permisos
+        return authorities;            
     }
 
     @Override
