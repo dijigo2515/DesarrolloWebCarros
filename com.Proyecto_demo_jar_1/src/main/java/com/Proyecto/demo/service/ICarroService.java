@@ -7,10 +7,6 @@ package com.Proyecto.demo.service;
 import com.Proyecto.demo.entity.Carro;
 import java.util.List;
 
-/**
- *
- * @author Diana Jiménez
- */
 public interface ICarroService {
     public List<Carro> getAllCarro();           //Lista de objetos de tipo carro
     public Carro getCarroById (long id);

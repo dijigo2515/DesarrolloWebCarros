@@ -70,6 +70,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+<<<<<<< HEAD:com.Proyecto_demo_jar_1/src/main/java/com/Proyecto/demo/SecurityConfig.java
                 .loginPage("/login").permitAll().defaultSuccessUrl("/persona",true);
+=======
+                .loginPage("/login").permitAll().defaultSuccessUrl("/Home.html",true);
+>>>>>>> aa30b1a22f56785ecf175e82f372232685c61b76:Proyecto - Copy/src/main/java/com/Proyecto/demo/SecurityConfig.java
     }
 }
