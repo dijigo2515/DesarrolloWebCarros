@@ -4,7 +4,7 @@
  */
 package com.Proyecto.demo.service;
 
-import com.Proyecto.demo.entity.Persona;
+import com.Proyecto.demo.entity.Usuario;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,39 +12,47 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+/**
+ *
+ * @author Diana Jiménez
+ */
 public class Userprincipal implements UserDetails {
-    private Persona persona; 
+    private Usuario usuario; 
     
-    public Userprincipal (Persona persona){
-        this.persona = persona;
+    public Userprincipal (Usuario usuario){
+        this.usuario = usuario;
     }
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-        List<GrantedAuthority> authorities = new ArrayList<>();    
+        List<GrantedAuthority> authorities = new ArrayList<>();      //Guarda objetos de tipo granted authority: cuales son los roles o permisos que tiene un usuario
         
-        this.persona.getPermissionList().forEach (p -> {                         
-        GrantedAuthority authority = new SimpleGrantedAuthority(p);           
+        //Extract list of permissions (name)
+        this.usuario.getPermissionList().forEach (p -> {                         //p es cada elemento
+        GrantedAuthority authority = new SimpleGrantedAuthority(p);             //Le pasamos "p" que es el permiso
         authorities.add(authority);
         });
     
-        
-        this.persona.getRoleList().forEach(r -> {
-           GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);   
+        //Extract list of roles (ROLE name)
+        this.usuario.getRoleList().forEach(r -> {
+           GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);   //Spring security
            authorities.add(authority);
         });
-        return authorities;            
+        return authorities;            //Devuelve lista de todos los permisos
     }
 
     @Override
     public String getPassword() {
-        return this.persona.getPassword();
+        return this.usuario.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.persona.getNombre();
+        return this.usuario.getNombre();
+    }
+        
+    public long getId() {
+        return this.usuario.getId();
     }
 
     @Override
@@ -64,6 +72,10 @@ public class Userprincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.persona.getActive() == 1;
+        return this.usuario.getActive() == 1;
+    }
+    
+    public boolean hasRole(String rol){
+        return usuario.hasRole(rol);
     }
 }
