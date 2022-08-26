@@ -17,8 +17,11 @@
                     <li><img src="../images/reloj.png" alt="alt" th:text="#{nav2}"/></li>
                     <li><a href="https://www.instagram.com/"><img src="../images/instagram.png" class ='image' alt="alt"/></a></li>
                     <li><a href="https://www.facebook.com/"><img src="../images/facebook.png" class ='image' alt="alt"/></a></li>
-                    <li><a style='color:white ' href="#" th:href="@{''(lang=es_ES)}" th:text="#{lang.es}">Español</a></li>
-                    <li><a style='color:white' href="#" th:href="@{''(lang=en_GB)}" th:text="#{lang.en}">Inglés</a></li>
+                    <li> <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" 
+                             type="button" class="btn btn-outline-secondary"> <a style='color:white; font-size: 13px;' href="#" th:href="@{''(lang=es_ES)}" th:text="#{lang.es}">Español</a> </button> </li>
+                    <li> <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" 
+                             type="button" class="btn btn-outline-secondary"> <a style='color:white; font-size: 13px;' href="#" th:href="@{''(lang=en_GB)}" th:text="#{lang.en}">Inglés</a> </button> </li> 
+       
                 </ul>
                 </div>
             </div>                        
@@ -40,8 +43,8 @@
                                     
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/carro/getNuevos}">Nuevos</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/carro/getUsados}">Usados</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/getNuevos}" th:text="#{dos_1}"></a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/getUsados}" th:text="#{dos_2}"></a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/5}">Nissan</a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/1}">Kia</a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/2}">Suzuki</a></li>
@@ -57,13 +60,14 @@
                                     
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/carro/misCarros}">Mis vehículos</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/carro/misCotizaciones}">Cotizaciones</a></li>   
+                                    <li><a class="dropdown-item" th:href="@{/carro/misCarros}" th:text="#{cuatro_1}"></a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/misCotizaciones}" th:text="#{cuatro_2}"></a></li>   
                                 </ul>
                             </li>                                                                              
                             <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="nav-link" th:href="@{/carro/getAll}" th:text="#{cinco}"></a>
-                            </li>                            
+                            </li>
+         
                             <li class="nav-item" sec:authorize="isAuthenticated()">
                                 <a class="nav-link" href="/login" th:text="#{seis}"></a>
                             </li>                            
@@ -74,13 +78,18 @@
         </header>
         <footer th:fragment="footer" style="background-color:#0F1A59;font-family: 'Monda', sans-serif;">            
             <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-2 border-top">
-                <p style='color:white'  th:text="#{footer1}"></p>
+                <p style='color:white'  th:text="#{footer1}"> </p>  
+                <p sec:authorize="hasRole('ROLE_USER')" style="color:white; position:relative; left:500px; top:-0px;" th:text="#{footer3}"></p>
+                <p sec:authorize="hasRole('ROLE_ADMIN')" style="color:white; position:relative; left:500px; top:-0px;" th:text="#{footer2}"></p>
+                   
                 <ul class="list-unstyled d-flex">                    
                     <li class="ms-3"><a class="link-dark" href="https://www.instagram.com/"><img src="../images/instagram.png" class ='image' alt="alt"/></a></li>
                     <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/"><img src="../images/facebook.png" class ='image' alt="alt"/></a></li>
                     <li class="ms-3"><a class="link-dark" href="https://www.instagram.com/"><img src="../images/whatsapp.png" class ='image' alt="alt"/></a></li>
                     <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/"><img src="../images/twitter.png" class ='image' alt="alt"/></a></li>
+                    
                 </ul>
+              
             </div>
         </footer>              
     </body>

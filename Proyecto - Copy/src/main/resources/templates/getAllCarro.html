@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
-        <title>Gestión vehículos | TodoAutos</title>
+        <title th:text="#{segundo}"></title>
         <link rel="stylesheet" href="../css/home.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -22,10 +22,14 @@ and open the template in the editor.
                 <div class='nav'>                    
                 <ul> 
                     <li><img src="../../images/telefono.png" alt="alt"/>+506 2222 5555</li>
-                    <li><img src="../../images/ubicacion.png" alt="alt"/>Oficinas centrales, Heredia</li>
-                    <li><img src="../../images/reloj.png" alt="alt"/>Lunes a Sabado: 8:00am - 4:00pm</li>
+                    <li><img src="../../images/ubicacion.png" alt="alt" th:text="#{nav1}"/></li>
+                    <li><img src="../../images/reloj.png" alt="alt" th:text="#{nav2}"/></li>
                     <li><a href="https://www.instagram.com/"><img src="../../images/instagram.png" class ='image' alt="alt"/></a></li>
                     <li><a href="https://www.facebook.com/"><img src="../../images/facebook.png" class ='image' alt="alt"/></a></li>
+                    <li> <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" 
+                             type="button" class="btn btn-outline-secondary"> <a style='color:white; font-size: 13px;' href="#" th:href="@{''(lang=es_ES)}" th:text="#{lang.es}">Español</a> </button> </li>
+                    <li> <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" 
+                             type="button" class="btn btn-outline-secondary"> <a style='color:white; font-size: 13px;' href="#" th:href="@{''(lang=en_GB)}" th:text="#{lang.en}">Inglés</a> </button> </li> 
                 </ul>
                 </div>
             </div>                        
@@ -40,15 +44,15 @@ and open the template in the editor.
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/Home/index}">Inicio</a>
+                                <a class="nav-link active" aria-current="page" th:href="@{/Home/index}" th:text="#{uno}"></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Vehículos
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{dos}">
+                                    
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/carro/getNuevos}">Nuevos</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/carro/getUsados}">Usados</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/getNuevos}" th:text="#{dos_1}"></a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/getUsados}" th:text="#{dos_2}"></a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/5}">Nissan</a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/1}">Kia</a></li>
                                     <li><a class="dropdown-item" th:href="@{/carro/getMarca/2}">Suzuki</a></li>
@@ -57,22 +61,22 @@ and open the template in the editor.
                                 </ul>
                             </li>                            
                             <li class="nav-item" sec:authorize="isAuthenticated()">
-                                <a class="nav-link" th:href="@{/carro/create}">Vender mi vehiculo</a>
+                                <a class="nav-link" th:href="@{/carro/create}" th:text="#{tres}"></a>
                             </li>
                             <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Mis Vehículos
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{cuatro}">
+                                    
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/carro/misCarros}">Mis vehículos</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/carro/misCotizaciones}">Cotizaciones</a></li>   
+                                    <li><a class="dropdown-item" th:href="@{/carro/misCarros}" th:text="#{cuatro_1}"></a></li>
+                                    <li><a class="dropdown-item" th:href="@{/carro/misCotizaciones}"  th:text="#{cuatro_2}"></a></li>   
                                 </ul>
                             </li>                                                     
                             <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                                <a class="nav-link" th:href="@{/carro/getAll}">Gestión vehículos</a>
+                                <a class="nav-link" th:href="@{/carro/getAll}" th:text="#{cinco}"></a>
                             </li>                            
                             <li class="nav-item" sec:authorize="isAuthenticated()">
-                                <a class="nav-link" href="/login">Cerrar sesión</a>
+                                <a class="nav-link" href="/login" th:text="#{seis}"></a>
                             </li>                            
                         </ul>
                     </div>
@@ -82,7 +86,7 @@ and open the template in the editor.
         <br>
         <div class="container">
             <div class="card">                            
-                <div class="card-header">Vehículos</div>
+                <div class="card-header" th:text="#{dos}"></div>
                 <div class="card-body">
                     <!--------------- Esto es un formulario --------------->
                     <div class="p-4">
@@ -91,11 +95,11 @@ and open the template in the editor.
                                 <tr>   
                                     <th scope="col" class='text-center'>Id </th>
                                     <th scope="col" class='text-center'> </th>
-                                    <th scope="col" class='text-center'>Marca </th>
-                                    <th scope="col" class='text-center'>Modelo </th>
-                                    <th scope="col" class='text-center'>Transmisión </th>                                    
-                                    <th scope="col" class='text-center'>Precio </th>                                    
-                                    <th scope="col" class="text-center">Acción </th>                                    
+                                    <th scope="col" class='text-center' th:text="#{c_3}"> </th>
+                                    <th scope="col" class='text-center' th:text="#{c_4}"> </th>
+                                    <th scope="col" class='text-center' th:text="#{c_5}"> </th>                                    
+                                    <th scope="col" class='text-center' th:text="#{c_9}"> </th>                                                                         
+                                    <th scope="col" class="text-center" th:text="#{c_22}"> </th>                                   
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,15 +143,15 @@ and open the template in the editor.
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                       <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar vehículo</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel" th:text="#{c_37}"></h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                       </div>
-                                                      <div class="modal-body">
+                                                      <div class="modal-body" >
                                                         ¿Estás seguro de que deseas eliminar este vehículo?
                                                       </div>
                                                       <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                                        <a th:href="@{/carro/delete/{id}(id=${carro.getId})}" class="btn btn-success">Confirmar</a>   
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" th:text="#{c_15}"></button>
+                                                        <a th:href="@{/carro/delete/{id}(id=${carro.getId})}" class="btn btn-success" th:text="#{c_16}"></a>   
                                                       </div>
                                                     </div>
                                                   </div>
@@ -163,19 +167,7 @@ and open the template in the editor.
                  </div>
             </div>
         </div>
-        <!-- Footer -->
-        <footer th:fragment="footer" style="background-color:#0F1A59;font-family: 'Monda', sans-serif;">            
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-2 border-top">
-                <p style='color:white'> &copy; 2022 Todo Autos, Inc. Todos los derechos reservados.</p>
-
-                <ul class="list-unstyled d-flex">                    
-                    <li class="ms-3"><a class="link-dark" href="https://www.instagram.com/"><img src="../../images/instagram.png" class ='image' alt="alt"/></a></li>
-                    <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/"><img src="../../images/facebook.png" class ='image' alt="alt"/></a></li>
-                    <li class="ms-3"><a class="link-dark" href="https://www.instagram.com/"><img src="../../images/whatsapp.png" class ='image' alt="alt"/></a></li>
-                    <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/"><img src="../../images/twitter.png" class ='image' alt="alt"/></a></li>
-                </ul>
-            </div>
-        </footer>  
+       
         <script>
             $(document).ready(function () {
                 if ($('#carsTable')) {
@@ -189,5 +181,6 @@ and open the template in the editor.
                 }    
             });
         </script>
-    </body>    
+    </body>
+    
 </html>
